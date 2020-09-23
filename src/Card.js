@@ -17,12 +17,16 @@ const Card = ({ name, period }) => {
         contentInset={{ top: 60, bottom: 20 }}
         curve={shape.curveBasis}
       />
-      <Image source={{ uri: tokenInfo.icon_address }} style={styles.icon} />
-      <Text style={styles.titleFont}>{name}</Text>
-      <Text style={styles.rateFont}>{`$${Number.parseFloat(
-        tokenRates.rate
-      ).toPrecision(6)}`}</Text>
-      <Text style={styles.changeFont}>+4.48% ($0.0097)</Text>
+      <View style={styles.iconContainer}>
+        <Image source={{ uri: tokenInfo.icon_address }} style={styles.icon} />
+        <Text style={styles.titleFont}>{name}</Text>
+      </View>
+      <View style={styles.rateContainer}>
+        <Text style={styles.rateFont}>{`$${Number.parseFloat(
+          tokenRates.rate
+        ).toPrecision(6)}`}</Text>
+        <Text style={styles.changeFont}>+4.48% ($0.0097)</Text>
+      </View>
     </View>
   );
 };
@@ -33,9 +37,25 @@ const styles = StyleSheet.create({
   container: {
     height: '18%',
     width: '90%',
-    border: '2px solid #F6F6F6',
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: '#F6F6F6',
     borderRadius: 15,
-    marginTop: '3%',
+    marginTop: '5%',
+  },
+  iconContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    position: 'absolute',
+    top: '10%',
+    left: '3%',
+  },
+  rateContainer: {
+    display: 'flex',
+    position: 'absolute',
+    top: '14%',
+    right: '4%',
+    alignItems: 'flex-end',
   },
   graph: {
     height: '100%',
@@ -44,16 +64,12 @@ const styles = StyleSheet.create({
   icon: {
     width: 36,
     height: 36,
-    position: 'absolute',
-    top: '0.5rem',
-    left: '0.7rem',
   },
   titleFont: {
     fontSize: 15,
     lineHeight: 18,
-    position: 'absolute',
-    top: '1.2rem',
-    left: '3.4rem',
+    marginTop: '10%',
+    paddingLeft: '5%',
     color: '#495162',
     textTransform: 'capitalize',
   },
@@ -61,16 +77,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 18,
     color: '#495162',
-    position: 'absolute',
-    top: '1rem',
-    right: '0.8rem',
   },
   changeFont: {
     fontSize: 12,
     lineHeight: 18,
     color: '#33BB5D',
-    position: 'absolute',
-    top: '2rem',
-    right: '0.8rem',
   },
 });

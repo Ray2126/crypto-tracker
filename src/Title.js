@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     width: '100%',
+    marginBottom: '5%',
   },
   title: {
     textAlign: 'center',

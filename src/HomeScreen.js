@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 
 import Navbar from './Navbar';
 import Title from './Title';
 import CardList from './CardList';
+import PeriodContext from './utils/PeriodContext';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
+  const periodHook = useState('week');
   return (
     <View style={styles.container}>
       <Title />
-      <Navbar />
-      <CardList />
+      <PeriodContext.Provider value={periodHook}>
+        <Navbar />
+        <CardList />
+      </PeriodContext.Provider>
     </View>
   );
 };

@@ -1,14 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Card from './Card';
+
+const blockchainList = ['sylo', 'ethereum', 'bitcoin', 'centrality'];
 
 const CardList = () => {
   return (
-    <View>
-      <Text>CardList</Text>
-    </View>
+    <React.Fragment>
+      {blockchainList.map((name) => {
+        return <Card key={name} name={name} period="week" />;
+      })}
+    </React.Fragment>
   );
 };
 
 export default CardList;
-
-const styles = StyleSheet.create({});

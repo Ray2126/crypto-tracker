@@ -26,7 +26,7 @@ const getDataHook = (name, period) => {
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [name, period]);
 
   return {
     graphData: graphData,

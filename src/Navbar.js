@@ -1,22 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 
-const navItems = [
-  { title: 'all' },
-  { title: 'year' },
-  { title: 'month' },
-  { title: 'week' },
-  { title: 'day' },
-];
+const navItems = ['all', 'year', 'month', 'week', 'day'];
 
 const Navbar = () => {
   return (
     <View style={styles.container}>
-      {navItems.map((navItem) => {
+      {navItems.map((title) => {
         return (
-          <TouchableHighlight onPress={() => console.log(navItem.title)}>
+          <TouchableHighlight key={title} onPress={() => console.log(title)}>
             <View>
-              <Text style={styles.item}>{navItem.title}</Text>
+              <Text style={styles.item}>{title}</Text>
             </View>
           </TouchableHighlight>
         );

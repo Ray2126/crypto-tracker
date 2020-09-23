@@ -1,36 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { LineChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
-import axios from 'axios';
+
+import getDataHook from './utils/getDataHook';
+import { periodType, blockchainCodes } from './utils/types';
 
 const Card = () => {
-  const [graphData, setGraphData] = useState([]);
-  const [tokenRates, setTokenRates] = useState({});
-  const [tokenInfo, setTokenInfo] = useState({});
-
-  useEffect(() => {
-    axios
-      .get(
-        'https://assets-api.sylo.io/v2/all?has_history_only=true&search=bitcoin'
-      )
-      .then((res) => {
-        setTokenInfo(res.data[0]);
-        axios
-          .get(
-            `https://assets-api.sylo.io/v2/asset/id/${res.data[0].id}/rate?fiat=NZD&period=day&type=historic`
-          )
-          .then((res) => {
-            let history = res.data.history.map((item) => {
-              return item['rate'];
-            });
-            setTokenRates(res.data);
-            setGraphData(history);
-          })
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const { graphData, tokenInfo, tokenRates } = getDataHook(
+    blockchainCodes.bitcoin,
+    periodType.week
+  );
 
   return (
     <View style={styles.container}>

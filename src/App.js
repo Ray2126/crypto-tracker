@@ -13,6 +13,7 @@ const Stack = createStackNavigator();
 export default function App() {
   const tokenDetailsHook = useState({});
   const periodHook = useState('week');
+
   return (
     <PeriodContext.Provider value={periodHook}>
       <TokenDetailsContext.Provider value={tokenDetailsHook}>

@@ -10,22 +10,26 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Navbar from './Navbar';
 import DetailedCard from './DetailedCard';
-import TokenDetailsContext from './utils/TokenDetailsContext';
 import DetailedText from './DetailedText';
+import TokenDetailsContext from './utils/TokenDetailsContext';
+import PeriodContext from './utils/PeriodContext';
+import getDataHook from './utils/getDataHook';
 
 const DetailsScreen = ({ navigation }) => {
   const tokenDetails = useContext(TokenDetailsContext)[0];
+  const period = useContext(PeriodContext)[0];
+  const data = getDataHook(period);
   return (
     <View style={styles.container}>
+      <TouchableWithoutFeedback onPress={() => navigation.pop()}>
+        <Ionicons
+          name="ios-arrow-back"
+          size={25}
+          color="black"
+          style={styles.backButton}
+        />
+      </TouchableWithoutFeedback>
       <View style={styles.titleContainer}>
-        <TouchableWithoutFeedback onPress={() => navigation.pop()}>
-          <Ionicons
-            name="ios-arrow-back"
-            size={25}
-            color="black"
-            style={styles.backButton}
-          />
-        </TouchableWithoutFeedback>
         <Image
           source={{ uri: tokenDetails[0].icon_address }}
           style={styles.icon}
@@ -60,7 +64,6 @@ const styles = StyleSheet.create({
     marginBottom: '2.5%',
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: '37%',
   },
   titleFont: {
     fontSize: 18,
@@ -68,6 +71,7 @@ const styles = StyleSheet.create({
     color: '#495162',
   },
   backButton: {
-    marginRight: '30%',
+    marginRight: '85%',
+    transform: [{ translateY: 28 }],
   },
 });

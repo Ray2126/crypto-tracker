@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, ScrollView, View } from 'react-native';
 
 import Navbar from './Navbar';
 import Title from './Title';
@@ -9,17 +9,21 @@ import PeriodContext from './utils/PeriodContext';
 const HomeScreen = ({ navigation }) => {
   const periodHook = useState('week');
   return (
-    <View style={styles.container}>
-      <Title />
-      <PeriodContext.Provider value={periodHook}>
-        <Navbar />
-        <TouchableWithoutFeedback
-          onPress={() => navigation.navigate('Details')}
-        >
-          <CardList />
-        </TouchableWithoutFeedback>
-      </PeriodContext.Provider>
-    </View>
+    <ScrollView
+      contentContainerStyle={{
+        flexGrow: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <View style={styles.container}>
+        <Title />
+        <PeriodContext.Provider value={periodHook}>
+          <Navbar />
+          <CardList nav={() => navigation.navigate('Details')} />
+        </PeriodContext.Provider>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -30,6 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
+    width: '100%',
     justifyContent: 'center',
   },
 });

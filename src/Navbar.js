@@ -14,6 +14,7 @@ const Navbar = () => {
           <TouchableOpacity
             key={title}
             onPress={() => {
+              console.log(title);
               setPeriod(title);
             }}
           >

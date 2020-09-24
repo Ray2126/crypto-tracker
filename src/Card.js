@@ -22,8 +22,8 @@ const Card = ({ info, data }) => {
         <CardRatesText
           data={data}
           style={styles.ratesFont}
-          rateSize="15"
-          changeSize="12"
+          rateSize={15}
+          changeSize={12}
           align="flex-end"
         />
       </View>

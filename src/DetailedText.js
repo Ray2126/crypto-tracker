@@ -5,17 +5,22 @@ const DetailedText = ({ info, data }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Information</Text>
+
       <View style={styles.textContainer}>
-        <Text style={styles.text}>Symbol: </Text>
-        <Text style={styles.text}>{info.symbol}</Text>
-        <Text style={styles.text}>Market Cap:</Text>
-        <Text style={styles.text}>
-          ${data.tokenRates.market_cap} {data.tokenRates.fiat_symbol}
-        </Text>
-        <Text style={styles.text}>24h Volume:</Text>
-        <Text style={styles.text}>
-          ${data.tokenRates.volume_24h} {data.tokenRates.fiat_symbol}
-        </Text>
+        <View style={styles.leftFlex}>
+          <Text style={styles.text}>Symbol: </Text>
+          <Text style={styles.text}>Market Cap:</Text>
+          <Text style={styles.text}>24h Volume:</Text>
+        </View>
+        <View style={styles.rightFlex}>
+          <Text style={styles.text}>{info.symbol}</Text>
+          <Text style={styles.text}>
+            ${data.tokenRates.market_cap} {data.tokenRates.fiat_symbol}
+          </Text>
+          <Text style={styles.text}>
+            ${data.tokenRates.volume_24h} {data.tokenRates.fiat_symbol}
+          </Text>
+        </View>
       </View>
     </View>
   );
@@ -28,9 +33,15 @@ const styles = StyleSheet.create({
     marginTop: '5%',
   },
   textContainer: {
-    display: 'grid',
-    gridTemplateRows: '50% 50% 50%',
-    gridTemplateColumns: '40% 100%',
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  leftFlex: {
+    display: 'flex',
+    marginRight: '10%',
+  },
+  rightFlex: {
+    display: 'flex',
   },
   title: {
     fontSize: 15,
@@ -43,5 +54,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 21,
     color: '#8A96AA',
+    marginBottom: 13,
   },
 });

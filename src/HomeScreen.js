@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, ScrollView, View } from 'react-native';
+import { StyleSheet, ScrollView, View, StatusBar } from 'react-native';
 
 import Navbar from './Navbar';
 import Title from './Title';
 import CardList from './CardList';
-import PeriodContext from './utils/PeriodContext';
 
 const HomeScreen = ({ navigation }) => {
-  const periodHook = useState('week');
   return (
     <ScrollView
       contentContainerStyle={{
@@ -17,11 +15,10 @@ const HomeScreen = ({ navigation }) => {
       }}
     >
       <View style={styles.container}>
+        <StatusBar hidden={true} />
         <Title />
-        <PeriodContext.Provider value={periodHook}>
-          <Navbar />
-          <CardList nav={() => navigation.navigate('Details')} />
-        </PeriodContext.Provider>
+        <Navbar />
+        <CardList nav={() => navigation.navigate('Details')} />
       </View>
     </ScrollView>
   );

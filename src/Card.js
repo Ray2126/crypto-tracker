@@ -50,7 +50,7 @@ export default Card;
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
+    height: 140,
     width: '90%',
     borderWidth: 2,
     borderStyle: 'solid',

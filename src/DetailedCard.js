@@ -3,6 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import { LineChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 
+import CardRatesText from './CardRatesText';
+
 const DetailedCard = ({ info, data }) => {
   console.log(info, data);
   return (
@@ -13,6 +15,13 @@ const DetailedCard = ({ info, data }) => {
         style={{ width: '100%', height: '100%' }}
         contentInset={{ top: 65, bottom: 20 }}
         curve={shape.curveBasis}
+      />
+      <CardRatesText
+        style={styles.ratesFont}
+        data={data}
+        top="10%"
+        rateSize={18}
+        align="center"
       />
     </View>
   );
@@ -30,4 +39,5 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginTop: '5%',
   },
+  ratesFont: {},
 });

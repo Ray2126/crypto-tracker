@@ -19,9 +19,14 @@ const getDataHook = (period) => {
               let history = res.data.history.map((item) => {
                 return item['rate'];
               });
+              //Get id this data belongs to
+              const id = res.config.url.substring(
+                res.config.url.indexOf('id/') + 3,
+                res.config.url.indexOf('/rate')
+              );
               setTokenRates((tokenRates) => [
                 ...tokenRates,
-                { graphData: history, tokenRates: res.data },
+                { graphData: history, tokenRates: res.data, id: id },
               ]);
             })
             .catch((err) => console.log(err));

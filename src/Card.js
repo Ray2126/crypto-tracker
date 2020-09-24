@@ -22,7 +22,12 @@ const Card = ({ info, data }) => {
           <Text style={styles.rateFont}>
             {`$${Number.parseFloat(data.tokenRates.rate).toPrecision(6)}`}
           </Text>
-          <Text style={styles.changeFont}>+4.48% ($0.0097)</Text>
+          <Text style={styles.changeFont}>
+            {getPercentageChange(
+              data.graphData[0],
+              data.graphData[data.graphData.length - 1]
+            )}
+          </Text>
         </View>
       </View>
     ) : (
@@ -31,6 +36,14 @@ const Card = ({ info, data }) => {
   ) : (
     <Text>Loading</Text>
   );
+};
+
+const getPercentageChange = (past, current) => {
+  const percent = Math.round(((current - past) / current) * 100.0 * 100) / 100;
+  const totalChange = Number.parseFloat(current - past).toPrecision(6);
+  return totalChange < 0
+    ? `${percent}% ($${totalChange})`
+    : `+${percent}% ($${totalChange})`;
 };
 
 export default Card;

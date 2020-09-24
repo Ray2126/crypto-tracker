@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native';
 
 import Navbar from './Navbar';
 import Title from './Title';
@@ -13,7 +13,11 @@ const HomeScreen = ({ navigation }) => {
       <Title />
       <PeriodContext.Provider value={periodHook}>
         <Navbar />
-        <CardList />
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate('Details')}
+        >
+          <CardList />
+        </TouchableWithoutFeedback>
       </PeriodContext.Provider>
     </View>
   );

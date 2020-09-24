@@ -11,11 +11,17 @@ const CardList = () => {
   return (
     <View style={styles.container}>
       {data.tokenInfo.map((blockchain, i) => {
+        //Find the data id that matches with the blockchain
+        const idToFind = blockchain.id;
+        const arr = data.tokenRates.map((e) => {
+          return e.id;
+        });
+        const idIndex = arr.lastIndexOf(idToFind);
         return (
           <Card
             key={blockchain.id}
             info={blockchain}
-            data={data.tokenRates[i]}
+            data={data.tokenRates[idIndex]}
           />
         );
       })}

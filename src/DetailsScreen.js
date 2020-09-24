@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import Navbar from './Navbar';
 import DetailedCard from './DetailedCard';
 import TokenDetailsContext from './utils/TokenDetailsContext';
+import DetailedText from './DetailedText';
 
 const DetailsScreen = () => {
   const tokenDetails = useContext(TokenDetailsContext)[0];
@@ -11,6 +12,7 @@ const DetailsScreen = () => {
     <View style={styles.container}>
       <Navbar />
       <DetailedCard info={tokenDetails[0]} data={tokenDetails[1]} />
+      <DetailedText info={tokenDetails[0]} data={tokenDetails[1]} />
     </View>
   );
 };

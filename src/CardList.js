@@ -3,10 +3,12 @@ import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 import Card from './Card';
 import PeriodContext from './utils/PeriodContext';
+import TokenDetailsContext from './utils/TokenDetailsContext';
 import getDataHook from './utils/getDataHook';
 
 const CardList = ({ nav }) => {
   const period = useContext(PeriodContext)[0];
+  const [tokenDetails, setTokenDetails] = useContext(TokenDetailsContext);
   const data = getDataHook(period);
   return (
     <View style={styles.container}>
@@ -18,7 +20,12 @@ const CardList = ({ nav }) => {
         });
         const idIndex = arr.lastIndexOf(idToFind);
         return (
-          <TouchableWithoutFeedback onPress={() => nav()}>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              setTokenDetails([blockchain, data.tokenRates[idIndex]]);
+              nav();
+            }}
+          >
             <View style={styles.cardContainer}>
               <Card
                 key={blockchain.id}

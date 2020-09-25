@@ -10,7 +10,7 @@ import TokenDetailsContext from './utils/TokenDetailsContext';
 
 const Stack = createStackNavigator();
 
-export default function App() {
+const App = () => {
   const tokenDetailsHook = useState({});
   const periodHook = useState('week');
 
@@ -27,3 +27,5 @@ export default function App() {
     </PeriodContext.Provider>
   );
 }
+
+export default App;

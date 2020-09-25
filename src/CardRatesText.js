@@ -1,6 +1,14 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
+const getPercentageChange = (past, current) => {
+  const percent = Math.round(((current - past) / current) * 100.0 * 100) / 100;
+  const totalChange = Number.parseFloat(current - past).toPrecision(6);
+  return totalChange < 0
+    ? `${percent}% ($${totalChange})`
+    : `+${percent}% ($${totalChange})`;
+};
+
 const CardRatesText = ({ data, rateSize, changeSize, align }) => {
   const styles = StyleSheet.create({
     container: {
@@ -39,10 +47,3 @@ const CardRatesText = ({ data, rateSize, changeSize, align }) => {
 
 export default CardRatesText;
 
-const getPercentageChange = (past, current) => {
-  const percent = Math.round(((current - past) / current) * 100.0 * 100) / 100;
-  const totalChange = Number.parseFloat(current - past).toPrecision(6);
-  return totalChange < 0
-    ? `${percent}% ($${totalChange})`
-    : `+${percent}% ($${totalChange})`;
-};

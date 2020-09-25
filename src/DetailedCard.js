@@ -1,21 +1,22 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { AreaChart } from 'react-native-svg-charts';
 import { Defs, LinearGradient, Stop } from 'react-native-svg';
 import * as shape from 'd3-shape';
 
+import CardBase from './CardBase';
 import CardRatesText from './CardRatesText';
 
-const DetailedCard = ({ info, data }) => {
+const DetailedCard = ({ data }) => {
   return (
-    <View style={styles.container}>
+    <CardBase height={185}>
       <AreaChart
         data={data.graphData}
         svg={{
           fill: 'url(#gradient)',
           stroke: '#F15A29',
         }}
-        style={{ width: '100%', height: '100%' }}
+        style={styles.graph}
         contentInset={{ top: 65, bottom: 20 }}
         curve={shape.curveBasis}
       >
@@ -23,13 +24,12 @@ const DetailedCard = ({ info, data }) => {
       </AreaChart>
 
       <CardRatesText
-        style={styles.ratesFont}
         data={data}
         top="10%"
         rateSize={18}
         align="center"
       />
-    </View>
+    </CardBase>
   );
 };
 
@@ -45,14 +45,7 @@ const Gradient = ({ index }) => (
 export default DetailedCard;
 
 const styles = StyleSheet.create({
-  container: {
-    height: 185,
-    width: '90%',
-    borderWidth: 2,
-    borderStyle: 'solid',
-    borderColor: '#F6F6F6',
-    borderRadius: 15,
-    marginTop: '5%',
-  },
-  ratesFont: {},
+  graph: {
+    width: '100%', height: '100%'
+  }
 });

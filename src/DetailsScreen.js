@@ -1,20 +1,15 @@
-import React, { useContext } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  TouchableWithoutFeedback,
-} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
-import Navbar from './Navbar';
+import React, { useContext } from 'react';
+import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 import DetailedCard from './DetailedCard';
 import DetailedText from './DetailedText';
+import Navbar from './Navbar';
 import TokenDetailsContext from './utils/TokenDetailsContext';
+
 
 const DetailsScreen = ({ navigation }) => {
   const tokenDetails = useContext(TokenDetailsContext)[0];
+
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={() => navigation.pop()}>
@@ -33,7 +28,7 @@ const DetailsScreen = ({ navigation }) => {
         <Text style={styles.titleFont}>{tokenDetails[0].name}</Text>
       </View>
       <Navbar />
-      <DetailedCard info={tokenDetails[0]} data={tokenDetails[1]} />
+      <DetailedCard data={tokenDetails[1]} />
       <DetailedText info={tokenDetails[0]} data={tokenDetails[1]} />
     </View>
   );

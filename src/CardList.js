@@ -8,11 +8,12 @@ import getDataHook from './utils/getDataHook';
 
 const CardList = ({ nav }) => {
   const period = useContext(PeriodContext)[0];
-  const [tokenDetails, setTokenDetails] = useContext(TokenDetailsContext);
+  const setTokenDetails = useContext(TokenDetailsContext)[1];
   const data = getDataHook(period);
+
   return (
     <View style={styles.container}>
-      {data.tokenInfo.map((blockchain, i) => {
+      {data.tokenInfo.map((blockchain) => {
         //Find the data id that matches with the blockchain
         const idToFind = blockchain.id;
         const arr = data.tokenRates.map((e) => {

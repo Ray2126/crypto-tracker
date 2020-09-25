@@ -7,6 +7,7 @@ const navItems = ['all', 'year', 'month', 'week', 'day'];
 
 const Navbar = () => {
   const [period, setPeriod] = useContext(PeriodContext);
+
   return (
     <View style={styles.container}>
       {navItems.map((title) => {

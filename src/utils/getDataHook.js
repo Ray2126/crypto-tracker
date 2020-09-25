@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const getDataHook = (period) => {
@@ -9,7 +9,7 @@ const getDataHook = (period) => {
       .get(`https://assets-api.sylo.io/v2/all?has_history_only=true`)
       .then((res) => {
         setTokenInfo(res.data);
-        res.data.forEach((blockchain, i) => {
+        res.data.forEach((blockchain) => {
           axios
             .get(
               `https://assets-api.sylo.io/v2/asset/id/${blockchain.id}/rate?fiat=NZD&period=${period}&type=historic`

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, ScrollView, View, StatusBar, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -8,11 +8,7 @@ import CardList from './CardList';
 const HomeScreen = ({ navigation }) => {
   return (
     <ScrollView
-      contentContainerStyle={{
-        flexGrow: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+      contentContainerStyle={styles.scrollContainer}
     >
       <View style={styles.container}>
         <StatusBar hidden={true} />
@@ -35,6 +31,11 @@ const HomeScreen = ({ navigation }) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

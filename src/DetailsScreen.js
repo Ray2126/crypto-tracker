@@ -12,13 +12,9 @@ import Navbar from './Navbar';
 import DetailedCard from './DetailedCard';
 import DetailedText from './DetailedText';
 import TokenDetailsContext from './utils/TokenDetailsContext';
-import PeriodContext from './utils/PeriodContext';
-import getDataHook from './utils/getDataHook';
 
 const DetailsScreen = ({ navigation }) => {
   const tokenDetails = useContext(TokenDetailsContext)[0];
-  const period = useContext(PeriodContext)[0];
-  const data = getDataHook(period);
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={() => navigation.pop()}>

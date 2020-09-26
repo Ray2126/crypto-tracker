@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     position: 'absolute',
     width: '95%',
-    marginTop: '2%',
+    marginTop: '4%',
   },
   rateFont: {
     lineHeight: 18,

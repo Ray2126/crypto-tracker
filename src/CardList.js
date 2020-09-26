@@ -22,6 +22,7 @@ const CardList = ({ nav }) => {
         const idIndex = arr.lastIndexOf(idToFind);
         return (
           <TouchableWithoutFeedback
+            key={blockchain.id}
             onPress={() => {
               setTokenDetails([blockchain, data.tokenRates[idIndex]]);
               nav();
@@ -29,7 +30,7 @@ const CardList = ({ nav }) => {
           >
             <View style={styles.cardContainer}>
               <Card
-                key={blockchain.id}
+
                 info={blockchain}
                 data={data.tokenRates[idIndex]}
               />

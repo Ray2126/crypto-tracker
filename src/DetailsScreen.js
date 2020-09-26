@@ -4,11 +4,20 @@ import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-n
 import DetailedCard from './DetailedCard';
 import DetailedText from './DetailedText';
 import Navbar from './Navbar';
+import PeriodContext from './utils/PeriodContext';
 import TokenDetailsContext from './utils/TokenDetailsContext';
-
+import getDataHook from './utils/getDataHook';
 
 const DetailsScreen = ({ navigation }) => {
   const tokenDetails = useContext(TokenDetailsContext)[0];
+  const period = useContext(PeriodContext)[0];
+  const data = getDataHook(period);
+
+  const idToFind = tokenDetails[0].id;
+  const arr = data.tokenRates.map((e) => {
+    return e.id;
+  });
+  const idIndex = arr.lastIndexOf(idToFind);
 
   return (
     <View style={styles.container}>
@@ -28,7 +37,7 @@ const DetailsScreen = ({ navigation }) => {
         <Text style={styles.titleFont}>{tokenDetails[0].name}</Text>
       </View>
       <Navbar />
-      <DetailedCard data={tokenDetails[1]} />
+      <DetailedCard data={data.tokenRates[idIndex]} />
       <DetailedText info={tokenDetails[0]} data={tokenDetails[1]} />
     </View>
   );
@@ -62,7 +71,8 @@ const styles = StyleSheet.create({
     color: '#495162',
   },
   backButton: {
-    marginRight: '85%',
+    marginRight: '80%',
+    paddingRight: '5%',
     transform: [{ translateY: 28 }],
   },
 });

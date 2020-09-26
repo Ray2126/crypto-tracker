@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { AreaChart } from 'react-native-svg-charts';
 import { Defs, LinearGradient, Stop } from 'react-native-svg';
 import * as shape from 'd3-shape';
@@ -8,7 +8,7 @@ import CardBase from './CardBase';
 import CardRatesText from './CardRatesText';
 
 const DetailedCard = ({ data }) => {
-  return (
+  return data ? (
     <CardBase height={185}>
       <AreaChart
         data={data.graphData}
@@ -30,7 +30,7 @@ const DetailedCard = ({ data }) => {
         align="center"
       />
     </CardBase>
-  );
+  ) : <Text>Loading</Text>;
 };
 
 const Gradient = ({ index }) => (

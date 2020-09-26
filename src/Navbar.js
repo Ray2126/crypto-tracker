@@ -1,13 +1,10 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-
 import PeriodContext from './utils/PeriodContext';
-
-const navItems = ['all', 'year', 'month', 'week', 'day'];
 
 const Navbar = () => {
   const [period, setPeriod] = useContext(PeriodContext);
-
+  const navItems = ['all', 'year', 'month', 'week', 'day'];
   return (
     <View style={styles.container}>
       {navItems.map((title) => {

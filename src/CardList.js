@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
-
 import Card from './Card';
 import PeriodContext from './utils/PeriodContext';
 import TokenDetailsContext from './utils/TokenDetailsContext';
@@ -9,14 +8,13 @@ import getDataHook from './utils/getDataHook';
 const CardList = ({ nav }) => {
   const period = useContext(PeriodContext)[0];
   const setTokenDetails = useContext(TokenDetailsContext)[1];
-  const data = getDataHook(period);
-
+  const { tokenInfo, tokenRates } = getDataHook(period);
   return (
     <View style={styles.container}>
-      {data.tokenInfo.map((blockchain) => {
+      {tokenInfo.map((blockchain) => {
         //Find the data id that matches with the blockchain
         const idToFind = blockchain.id;
-        const arr = data.tokenRates.map((e) => {
+        const arr = tokenRates.map((e) => {
           return e.id;
         });
         const idIndex = arr.lastIndexOf(idToFind);
@@ -24,7 +22,7 @@ const CardList = ({ nav }) => {
           <TouchableWithoutFeedback
             key={blockchain.id}
             onPress={() => {
-              setTokenDetails([blockchain, data.tokenRates[idIndex]]);
+              setTokenDetails([blockchain, tokenRates[idIndex]]);
               nav();
             }}
           >
@@ -32,7 +30,7 @@ const CardList = ({ nav }) => {
               <Card
 
                 info={blockchain}
-                data={data.tokenRates[idIndex]}
+                data={tokenRates[idIndex]}
               />
             </View>
           </TouchableWithoutFeedback>

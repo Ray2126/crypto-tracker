@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { LineChart } from 'react-native-svg-charts';
-import * as shape from 'd3-shape';
-
+import { curveBasis } from 'd3-shape';
 import CardBase from './CardBase'
 import CardRatesText from './CardRatesText';
 
@@ -14,7 +13,7 @@ const Card = ({ info, data }) => {
         svg={{ stroke: 'rgb(241,90,41)' }}
         style={styles.graph}
         contentInset={{ top: 65, bottom: 20 }}
-        curve={shape.curveBasis}
+        curve={curveBasis}
       />
       <View style={styles.iconContainer}>
         <Image source={{ uri: info.icon_address }} style={styles.icon} />

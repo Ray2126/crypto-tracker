@@ -1,17 +1,13 @@
 import React from 'react';
-import { StyleSheet, ScrollView, View, StatusBar, Text } from 'react-native';
+import { StyleSheet, ScrollView, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
 import Navbar from './Navbar';
 import CardList from './CardList';
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <ScrollView
-      contentContainerStyle={styles.scrollContainer}
-    >
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
-        <StatusBar hidden={true} />
         <Ionicons
           name="ios-search"
           size={25}

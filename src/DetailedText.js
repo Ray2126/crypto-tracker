@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   leftFlex: {
     display: 'flex',
-    marginRight: '10%',
+    marginRight: '5%',
   },
   rightFlex: {
     display: 'flex',

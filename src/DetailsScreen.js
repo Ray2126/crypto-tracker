@@ -1,20 +1,21 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import Navbar from './Navbar';
 import DetailedCard from './DetailedCard';
 import DetailedText from './DetailedText';
-import Navbar from './Navbar';
 import PeriodContext from './utils/PeriodContext';
 import TokenDetailsContext from './utils/TokenDetailsContext';
 import getDataHook from './utils/getDataHook';
 
 const DetailsScreen = ({ navigation }) => {
-  const tokenDetails = useContext(TokenDetailsContext)[0];
+  const [tokenInfo, tokenData] = useContext(TokenDetailsContext)[0];
   const period = useContext(PeriodContext)[0];
-  const data = getDataHook(period);
+  const { tokenRates } = getDataHook(period);
 
-  const idToFind = tokenDetails[0].id;
-  const arr = data.tokenRates.map((e) => {
+  //Find corresponding token data to use
+  const idToFind = tokenInfo.id;
+  const arr = tokenRates.map((e) => {
     return e.id;
   });
   const idIndex = arr.lastIndexOf(idToFind);
@@ -31,14 +32,14 @@ const DetailsScreen = ({ navigation }) => {
       </TouchableWithoutFeedback>
       <View style={styles.titleContainer}>
         <Image
-          source={{ uri: tokenDetails[0].icon_address }}
+          source={{ uri: tokenInfo.icon_address }}
           style={styles.icon}
         />
-        <Text style={styles.titleFont}>{tokenDetails[0].name}</Text>
+        <Text style={styles.titleFont}>{tokenInfo.name}</Text>
       </View>
       <Navbar />
-      <DetailedCard data={data.tokenRates[idIndex]} />
-      <DetailedText info={tokenDetails[0]} data={tokenDetails[1]} />
+      <DetailedCard data={tokenRates[idIndex]} />
+      <DetailedText info={tokenInfo} data={tokenData} />
     </View>
   );
 };
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 30,
     height: 30,
+    marginRight: '2%',
   },
   titleContainer: {
     display: 'flex',

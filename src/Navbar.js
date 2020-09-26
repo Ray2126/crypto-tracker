@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 import PeriodContext from './utils/PeriodContext';
 
 const Navbar = () => {
+  const { colors } = useTheme();
   const [period, setPeriod] = useContext(PeriodContext);
   const navItems = ['all', 'year', 'month', 'week', 'day'];
   return (
@@ -11,14 +13,11 @@ const Navbar = () => {
         return (
           <TouchableOpacity
             key={title}
-            onPress={() => {
-              console.log(title);
-              setPeriod(title);
-            }}
+            onPress={() => setPeriod(title)}
           >
             <View>
               <Text
-                style={period === title ? styles.itemSelected : styles.item}
+                style={period === title ? styles.itemSelected : [styles.item, { color: colors.secondary }]}
               >
                 {title}
               </Text>

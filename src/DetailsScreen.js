@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 import Navbar from './Navbar';
 import DetailedCard from './DetailedCard';
 import DetailedText from './DetailedText';
@@ -9,6 +10,7 @@ import TokenDetailsContext from './utils/TokenDetailsContext';
 import getDataHook from './utils/getDataHook';
 
 const DetailsScreen = ({ navigation }) => {
+  const { colors } = useTheme();
   const [tokenInfo, tokenData] = useContext(TokenDetailsContext)[0];
   const period = useContext(PeriodContext)[0];
   const { tokenRates } = getDataHook(period);
@@ -21,12 +23,12 @@ const DetailsScreen = ({ navigation }) => {
   const idIndex = arr.lastIndexOf(idToFind);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { color: colors.background }]}>
       <TouchableWithoutFeedback onPress={() => navigation.pop()}>
         <Ionicons
           name="ios-arrow-back"
           size={25}
-          color="black"
+          color={colors.primary}
           style={styles.backButton}
         />
       </TouchableWithoutFeedback>
@@ -35,7 +37,7 @@ const DetailsScreen = ({ navigation }) => {
           source={{ uri: tokenInfo.icon_address }}
           style={styles.icon}
         />
-        <Text style={styles.titleFont}>{tokenInfo.name}</Text>
+        <Text style={[styles.titleFont, { color: colors.primary }]}>{tokenInfo.name}</Text>
       </View>
       <Navbar />
       <DetailedCard data={tokenRates[idIndex]} />
@@ -49,7 +51,6 @@ export default DetailsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     width: '100%',
     paddingTop: '8%',
@@ -70,7 +71,6 @@ const styles = StyleSheet.create({
   titleFont: {
     fontSize: 18,
     lineHeight: 21,
-    color: '#495162',
   },
   backButton: {
     marginRight: '80%',

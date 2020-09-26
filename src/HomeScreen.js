@@ -1,21 +1,23 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from '@react-navigation/native';
 import Navbar from './Navbar';
 import CardList from './CardList';
 
 const HomeScreen = ({ navigation }) => {
+  const { colors } = useTheme();
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: colors.background }]}>
         <Ionicons
           name="ios-search"
           size={25}
-          color="black"
+          color={colors.primary}
           style={styles.searchButton}
         />
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Tracker</Text>
+          <Text style={[styles.title, { color: colors.primary }]}>Tracker</Text>
         </View>
         <Navbar />
         <CardList nav={() => navigation.navigate('Details')} />
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     width: '100%',
     justifyContent: 'center',
@@ -53,7 +54,6 @@ const styles = StyleSheet.create({
     transform: [{ translateY: 25 }],
   },
   title: {
-    color: '#495162',
     fontSize: 18,
     lineHeight: 21,
   },

@@ -1,23 +1,36 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 const DetailedText = ({ info, data }) => {
+  const { colors } = useTheme();
+  const textColor = {
+    color: colors.secondary
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Information</Text>
+      <Text style={[styles.title, { color: colors.primary }]}>Information</Text>
 
       <View style={styles.textContainer}>
         <View style={styles.leftFlex}>
-          <Text style={styles.text}>Symbol: </Text>
-          <Text style={styles.text}>Market Cap:</Text>
-          <Text style={styles.text}>24h Volume:</Text>
+          <Text style={[styles.text, textColor]}>
+            Symbol:
+          </Text>
+          <Text style={[styles.text, textColor]}>
+            Market Cap:
+          </Text>
+          <Text style={[styles.text, textColor]}>
+            24h Volume:
+          </Text>
         </View>
         <View style={styles.rightFlex}>
-          <Text style={styles.text}>{info.symbol}</Text>
-          <Text style={styles.text}>
+          <Text style={[styles.text, textColor]}>
+            {info.symbol}
+          </Text>
+          <Text style={[styles.text, textColor]}>
             ${data.tokenRates.market_cap} {data.tokenRates.fiat_symbol}
           </Text>
-          <Text style={styles.text}>
+          <Text style={[styles.text, textColor]}>
             ${data.tokenRates.volume_24h} {data.tokenRates.fiat_symbol}
           </Text>
         </View>
@@ -47,13 +60,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 21,
     textAlign: 'center',
-    color: '#495162',
     marginBottom: '5%',
   },
   text: {
     fontSize: 15,
     lineHeight: 21,
-    color: '#8A96AA',
     marginBottom: 13,
   },
 });

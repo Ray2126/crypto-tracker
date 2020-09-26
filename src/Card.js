@@ -2,10 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { LineChart } from 'react-native-svg-charts';
 import { curveBasis } from 'd3-shape';
+import { useTheme } from '@react-navigation/native';
 import CardBase from './CardBase'
 import CardRatesText from './CardRatesText';
 
 const Card = ({ info, data }) => {
+  const { colors } = useTheme();
   return data ? (
     <CardBase height={140}>
       <LineChart
@@ -17,7 +19,7 @@ const Card = ({ info, data }) => {
       />
       <View style={styles.iconContainer}>
         <Image source={{ uri: info.icon_address }} style={styles.icon} />
-        <Text style={styles.titleFont}>{info.name}</Text>
+        <Text style={[styles.titleFont, { color: colors.primary }]}>{info.name}</Text>
       </View>
       <CardRatesText
         data={data}
@@ -27,7 +29,7 @@ const Card = ({ info, data }) => {
       />
     </CardBase>
   ) : (
-      <Text>Loading</Text>
+      <Text></Text>
     )
 
 };
@@ -60,7 +62,6 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     marginTop: '2%',
     paddingLeft: '2%',
-    color: '#495162',
     textTransform: 'capitalize',
   },
 });

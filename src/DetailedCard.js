@@ -30,7 +30,7 @@ const DetailedCard = ({ data }) => {
         align="center"
       />
     </CardBase>
-  ) : <Text>Loading</Text>;
+  ) : <Text></Text>;
 };
 
 const Gradient = ({ index }) => (

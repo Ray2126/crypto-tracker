@@ -1,11 +1,13 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 const CardRatesText = ({ data, rateSize, changeSize, align }) => {
+  const { colors } = useTheme();
   const { tokenRates, graphData } = data;
   return (
     <View style={[styles.container, { alignItems: align || 'center' }]}>
-      <Text style={[styles.rateFont, { fontSize: rateSize || 15 }]}>
+      <Text style={[styles.rateFont, { fontSize: rateSize || 15, color: colors.primary }]}>
         {`$${Number.parseFloat(tokenRates.rate).toPrecision(6)}`}
       </Text>
       <Text style={[styles.changeFont, { fontSize: changeSize || 12 }]}>
@@ -45,7 +47,6 @@ const styles = StyleSheet.create({
   },
   rateFont: {
     lineHeight: 18,
-    color: '#495162',
   },
   changeFont: {
     lineHeight: 18,

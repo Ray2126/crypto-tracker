@@ -43,7 +43,7 @@ export default DetailedText;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: '5%',
+    marginTop: '8%',
   },
   textContainer: {
     display: 'flex',

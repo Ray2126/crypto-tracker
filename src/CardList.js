@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     marginLeft: '9%',
+    flexGrow: 1,
   },
   cardContainer: {
     width: '100%',

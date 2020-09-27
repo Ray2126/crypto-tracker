@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: '10%',
   },
   container: {
     flex: 1,
@@ -44,9 +45,8 @@ const styles = StyleSheet.create({
   titleContainer: {
     display: 'flex',
     flexDirection: 'row',
-    marginBottom: '2%',
     width: '100%',
-    marginBottom: '4.5%',
+    marginBottom: '6%',
     justifyContent: 'center',
   },
   searchButton: {

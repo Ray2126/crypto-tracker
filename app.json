@@ -23,7 +23,7 @@
       "favicon": "./assets/favicon.png"
     },
     "userInterfaceStyle": "automatic",
-    "description": "Track the rates of bitcoin and other popular digital currencies.",
+    "description": "Track the rates of bitcoin and other digital currencies.",
     "githubUrl": "https://github.com/Ray2126/crypto-tracker"
   }
 }

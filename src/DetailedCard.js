@@ -15,6 +15,7 @@ const DetailedCard = ({ data }) => {
         svg={{
           fill: 'url(#gradient)',
           stroke: '#F15A29',
+          strokeWidth: 1.5,
         }}
         style={styles.graph}
         contentInset={{ top: 65, bottom: 20 }}
@@ -36,8 +37,8 @@ const DetailedCard = ({ data }) => {
 const Gradient = ({ index }) => (
   <Defs key={index}>
     <LinearGradient id={'gradient'} x1="0" y1="0" x2="0" y2="1">
-      <Stop offset="0" stopColor="#F15A29" stopOpacity={0} />
-      <Stop offset="1" stopColor="#f15a29" stopOpacity={1} />
+      <Stop offset="0" stopColor="#F15A29" stopOpacity={1} />
+      <Stop offset="1" stopColor="#F15A29" stopOpacity={0} />
     </LinearGradient>
   </Defs>
 );

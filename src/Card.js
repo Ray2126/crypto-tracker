@@ -12,7 +12,7 @@ const Card = ({ info, data }) => {
     <CardBase height={140}>
       <LineChart
         data={data.graphData}
-        svg={{ stroke: 'rgb(241,90,41)' }}
+        svg={{ stroke: 'rgb(241,90,41)', strokeWidth: 1.5 }}
         style={styles.graph}
         contentInset={{ top: 65, bottom: 20 }}
         curve={curveBasis}

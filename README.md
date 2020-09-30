@@ -13,4 +13,4 @@ Download the [Expo](https://apps.apple.com/app/apple-store/id982107779) app from
 ```
 expo start
 ```
-to run the Expo CLI. On the Expo CLI, you should then click "Send link with email...". Enter your email and then you should get a link to open the Expo app through your iOS device.
+to run the Expo CLI. On the Expo CLI, you should then click "Send link with email...". Enter your email and then you should get an email with a link to open the Expo app through your iOS device.

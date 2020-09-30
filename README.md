@@ -9,5 +9,8 @@ Download the [Expo](https://play.google.com/store/apps/details?id=host.exp.expon
 
 ### IOS
 
-Download the [Expo](https://apps.apple.com/app/apple-store/id982107779) app from the App store. Then, copy "https://<span></span>expo.io/--/to-exp/exp%3A%2F%2F192.168.20.14%3A19000" into the Expo app.
-
+Download the [Expo](https://apps.apple.com/app/apple-store/id982107779) app from the App store. Then, clone this repository into your local and run the command 
+```
+expo start
+```
+to run the Expo CLI. On the Expo CLI, you should then click "Send link with email...". Enter your email and then you should get a link to open the Expo app through your iOS device.

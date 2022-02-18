@@ -33,9 +33,9 @@ const getRatePercentageChange = (past, current) => {
     percent = Math.abs(percent);
     totalChange = Math.abs(totalChange);
   } else {
-    percentPrepend += '+'
+    percentPrepend += '+';
   }
-  return `${percentPrepend}${percent}% (${totalChangePrepend}$${totalChange})`
+  return `${percentPrepend}${percent}% (${totalChangePrepend}$${totalChange})`;
 };
 
 const styles = StyleSheet.create({

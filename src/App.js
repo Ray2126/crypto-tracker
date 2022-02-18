@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { AppearanceProvider, useColorScheme } from 'react-native-appearance'
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import HomeScreen from './HomeScreen';
 import DetailsScreen from './DetailsScreen';
 import PeriodContext from './utils/PeriodContext';
@@ -20,7 +20,7 @@ const App = () => {
       primary: '#495162',
       secondary: '#8A96AA',
     }
-  }
+  };
   const darkTheme = {
     dark: true,
     colors: {
@@ -28,7 +28,7 @@ const App = () => {
       primary: '#F6F6F6',
       secondary: '#646464',
     }
-  }
+  };
 
   return (
     <AppearanceProvider>
@@ -44,6 +44,6 @@ const App = () => {
       </PeriodContext.Provider>
     </AppearanceProvider>
   );
-}
+};
 
 export default App;

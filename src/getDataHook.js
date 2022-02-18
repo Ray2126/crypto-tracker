@@ -6,10 +6,10 @@ const getDataHook = (period) => {
   const [tokenRates, setTokenRates] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://assets-api.sylo.io/v2/all?has_history_only=true`)
-      .then((res) => {
-        setTokenInfo(res.data);
-        res.data.forEach((blockchain) => {
+      .get('https://assets-api.sylo.io/v2/all?has_history_only=true')
+      .then((listResponse) => {
+        setTokenInfo(listResponse.data);
+        listResponse.data.forEach((blockchain) => {
           axios
             .get(
               `https://assets-api.sylo.io/v2/asset/id/${blockchain.id}/rate?fiat=NZD&period=${period}&type=historic`
@@ -24,8 +24,8 @@ const getDataHook = (period) => {
                 res.config.url.indexOf('id/') + 3,
                 res.config.url.indexOf('/rate')
               );
-              setTokenRates((tokenRates) => [
-                ...tokenRates,
+              setTokenRates((t) => [
+                ...t,
                 { graphData: history, tokenRates: res.data, id: id },
               ]);
             })

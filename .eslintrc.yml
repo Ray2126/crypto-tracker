@@ -1,0 +1,30 @@
+env:
+  browser: true
+  es2021: true
+  react-native/react-native: true
+extends:
+  - 'eslint:recommended'
+  - 'plugin:react/recommended'
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 12
+  sourceType: module
+plugins:
+  - react
+  - react-native
+rules:
+  arrow-spacing: error
+  complexity: [ error, 6 ]
+  curly: [ error, all ]
+  indent: [ error, 2 ]
+  key-spacing: [ error, { beforeColon: false } ]
+  linebreak-style: [ error, unix ]
+  no-process-exit: off
+  no-trailing-spaces: [ error ]
+  quotes: [ error, single ]
+  semi: [ error, always ]
+  space-infix-ops: [ error ]
+  no-shadow: error
+  require-await: [ error ]
+  react/prop-types: 'off'

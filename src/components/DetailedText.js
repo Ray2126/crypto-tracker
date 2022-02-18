@@ -6,7 +6,7 @@ const DetailedText = ({ info, data }) => {
   const { colors } = useTheme();
   const textColor = {
     color: colors.secondary
-  }
+  };
   return (
     <View style={styles.container}>
       <Text style={[styles.title, { color: colors.primary }]}>Information</Text>

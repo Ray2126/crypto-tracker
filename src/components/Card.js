@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { LineChart } from 'react-native-svg-charts';
 import { curveBasis } from 'd3-shape';
 import { useTheme } from '@react-navigation/native';
-import CardBase from './CardBase'
+import CardBase from './CardBase';
 import CardRatesText from './CardRatesText';
 
 const Card = ({ info, data }) => {
@@ -29,8 +29,8 @@ const Card = ({ info, data }) => {
       />
     </CardBase>
   ) : (
-      <Text></Text>
-    )
+    <Text></Text>
+  );
 
 };
 

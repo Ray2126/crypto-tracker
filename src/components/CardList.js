@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import Card from './Card';
-import PeriodContext from './utils/PeriodContext';
-import TokenDetailsContext from './utils/TokenDetailsContext';
-import getDataHook from './utils/getDataHook';
+import PeriodContext from '../PeriodContext';
+import TokenDetailsContext from '../TokenDetailsContext';
+import getDataHook from '../getDataHook';
 
 const CardList = ({ nav }) => {
   const period = useContext(PeriodContext)[0];

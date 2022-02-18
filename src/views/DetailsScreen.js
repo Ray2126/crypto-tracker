@@ -2,12 +2,12 @@ import { Ionicons } from '@expo/vector-icons';
 import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import Navbar from './Navbar';
-import DetailedCard from './DetailedCard';
-import DetailedText from './DetailedText';
-import PeriodContext from './utils/PeriodContext';
-import TokenDetailsContext from './utils/TokenDetailsContext';
-import getDataHook from './utils/getDataHook';
+import Navbar from '../components/Navbar';
+import DetailedCard from '../components/DetailedCard';
+import DetailedText from '../components/DetailedText';
+import PeriodContext from '../PeriodContext';
+import TokenDetailsContext from '../TokenDetailsContext';
+import getDataHook from '../getDataHook';
 
 const DetailsScreen = ({ navigation }) => {
   const { colors } = useTheme();

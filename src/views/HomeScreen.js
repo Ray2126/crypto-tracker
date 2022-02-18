@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, ScrollView, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@react-navigation/native';
-import Navbar from './Navbar';
-import CardList from './CardList';
+import Navbar from '../components/Navbar';
+import CardList from '../components/CardList';
 
 const HomeScreen = ({ navigation }) => {
   const { colors } = useTheme();

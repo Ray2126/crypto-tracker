@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
-import HomeScreen from './HomeScreen';
-import DetailsScreen from './DetailsScreen';
-import PeriodContext from './utils/PeriodContext';
-import TokenDetailsContext from './utils/TokenDetailsContext';
+import HomeScreen from './views/HomeScreen';
+import DetailsScreen from './views/DetailsScreen';
+import PeriodContext from './PeriodContext';
+import TokenDetailsContext from './TokenDetailsContext';
 
 const Stack = createStackNavigator();
 

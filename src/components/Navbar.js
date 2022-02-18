@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import PeriodContext from './utils/PeriodContext';
+import PeriodContext from '../PeriodContext';
 
 const Navbar = () => {
   const { colors } = useTheme();

@@ -28,3 +28,7 @@ rules:
   no-shadow: error
   require-await: [ error ]
   react/prop-types: 'off'
+overrides:
+  - files: [ "**/*.test.js" ]
+    rules:
+      no-undef: 'off'

@@ -1,36 +1,24 @@
 import React, { useContext } from 'react';
 import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import Card from './Card';
-import PeriodContext from '../PeriodContext';
-import TokenDetailsContext from '../TokenDetailsContext';
-import getDataHook from '../getDataHook';
+import CoinsContext from '../CoinsContext';
 
 const CardList = ({ nav }) => {
-  const period = useContext(PeriodContext)[0];
-  const setTokenDetails = useContext(TokenDetailsContext)[1];
-  const { tokenInfo, tokenRates } = getDataHook(period);
+  const coins = useContext(CoinsContext);
   return (
     <View style={styles.container}>
-      {tokenInfo.map((blockchain) => {
-        //Find the data id that matches with the blockchain
-        const idToFind = blockchain.id;
-        const arr = tokenRates.map((e) => {
-          return e.id;
-        });
-        const idIndex = arr.lastIndexOf(idToFind);
+      {coins.map((coin) => {
         return (
           <TouchableWithoutFeedback
-            key={blockchain.id}
+            key={coin.id}
             onPress={() => {
-              setTokenDetails([blockchain, tokenRates[idIndex]]);
-              nav();
+              // setTokenDetails([coin, tokenRates[idIndex]]);
+              // nav();
             }}
           >
             <View style={styles.cardContainer}>
               <Card
-
-                info={blockchain}
-                data={tokenRates[idIndex]}
+                coin={coin}
               />
             </View>
           </TouchableWithoutFeedback>

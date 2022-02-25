@@ -2,19 +2,15 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
-const CardRatesText = ({ data, rateSize, changeSize, align }) => {
+const CardRatesText = ({ rate, change, rateSize, changeSize, align }) => {
   const { colors } = useTheme();
-  const { tokenRates, graphData } = data;
   return (
     <View style={[styles.container, { alignItems: align || 'center' }]}>
       <Text style={[styles.rateFont, { fontSize: rateSize || 15, color: colors.primary }]}>
-        {`$${Number.parseFloat(tokenRates.rate).toPrecision(6)}`}
+        {`$${Number.parseFloat(rate).toPrecision(6)}`}
       </Text>
       <Text style={[styles.changeFont, { fontSize: changeSize || 12 }]}>
-        {getRatePercentageChange(
-          graphData[0],
-          graphData[graphData.length - 1]
-        )}
+        { change }
       </Text>
     </View>
   );

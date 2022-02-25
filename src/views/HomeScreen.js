@@ -10,16 +10,10 @@ const HomeScreen = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={[styles.container, { backgroundColor: colors.background }]}>
-        <Ionicons
-          name="ios-search"
-          size={25}
-          color={colors.primary}
-          style={styles.searchButton}
-        />
         <View style={styles.titleContainer}>
           <Text style={[styles.title, { color: colors.primary }]}>Tracker</Text>
         </View>
-        <Navbar />
+        {/* <Navbar /> */}
         <CardList nav={() => navigation.navigate('Details')} />
       </View>
     </ScrollView>
@@ -48,10 +42,6 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: '6%',
     justifyContent: 'center',
-  },
-  searchButton: {
-    marginLeft: '85%',
-    transform: [{ translateY: 25 }],
   },
   title: {
     fontSize: 18,

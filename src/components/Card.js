@@ -6,30 +6,29 @@ import { useTheme } from '@react-navigation/native';
 import CardBase from './CardBase';
 import CardRatesText from './CardRatesText';
 
-const Card = ({ info, data }) => {
+const Card = ({ coin }) => {
   const { colors } = useTheme();
-  return data ? (
+  return (
     <CardBase height={140}>
-      <LineChart
+      {/* <LineChart
         data={data.graphData}
         svg={{ stroke: 'rgb(241,90,41)', strokeWidth: 1.5 }}
         style={styles.graph}
         contentInset={{ top: 65, bottom: 20 }}
         curve={curveBasis}
-      />
+      /> */}
       <View style={styles.iconContainer}>
-        <Image source={{ uri: info.icon_address }} style={styles.icon} />
-        <Text style={[styles.titleFont, { color: colors.primary }]}>{info.name}</Text>
+        <Image source={{ uri: coin.imageUrl }} style={styles.icon} />
+        <Text style={[styles.titleFont, { color: colors.primary }]}>{coin.name}</Text>
       </View>
       <CardRatesText
-        data={data}
+        rate={coin.currentPrice}
+        change={coin.priceChangePercentage24Hr}
         rateSize={15}
         changeSize={12}
         align="flex-end"
       />
     </CardBase>
-  ) : (
-    <Text></Text>
   );
 
 };

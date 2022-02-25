@@ -6,12 +6,12 @@ import Navbar from '../components/Navbar';
 import DetailedCard from '../components/DetailedCard';
 import DetailedText from '../components/DetailedText';
 import PeriodContext from '../PeriodContext';
-import TokenDetailsContext from '../TokenDetailsContext';
+import CoinsContext from '../CoinsContext';
 import getDataHook from '../getDataHook';
 
 const DetailsScreen = ({ navigation }) => {
   const { colors } = useTheme();
-  const [tokenInfo, tokenData] = useContext(TokenDetailsContext)[0];
+  const [tokenInfo, tokenData] = useContext(CoinsContext)[0];
   const period = useContext(PeriodContext)[0];
   const { tokenRates } = getDataHook(period);
 

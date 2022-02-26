@@ -8,6 +8,7 @@ import PeriodContext from '../PeriodContext';
 import CoinsContext from '../CoinsContext';
 import getDataHook from '../getDataHook';
 import colors from '../styles/colors';
+import typography from '../styles/typography';
 
 const DetailsScreen = ({ navigation }) => {
   const [tokenInfo, tokenData] = useContext(CoinsContext)[0];
@@ -68,8 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titleFont: {
-    fontSize: 18,
-    lineHeight: 21,
+    ...typography.title,
   },
   backButton: {
     marginRight: '80%',

@@ -3,6 +3,7 @@ import { StyleSheet, ScrollView, View, Text } from 'react-native';
 import Navbar from '../components/Navbar';
 import CardList from '../components/CardList';
 import colors from '../styles/colors';
+import typography from '../styles/typography';
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -39,7 +40,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 18,
-    lineHeight: 21,
+    ...typography.title,
   },
 });

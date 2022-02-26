@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import typography from '../styles/typography';
 
 const DetailedText = ({ info, data }) => {
   const { colors } = useTheme();
@@ -57,13 +58,12 @@ const styles = StyleSheet.create({
     display: 'flex',
   },
   title: {
-    fontSize: 15,
-    lineHeight: 21,
+    ...typography.body,
     textAlign: 'center',
     marginBottom: '5%',
   },
   text: {
-    fontSize: 15,
+    ...typography.body,
     lineHeight: 21,
     marginBottom: 13,
   },

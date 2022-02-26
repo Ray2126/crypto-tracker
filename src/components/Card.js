@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import colors from '../styles/colors';
+import typography from '../styles/typography';
 
 const Card = ({ coin }) => {
   const styles = getStyles(colors);
@@ -57,8 +58,7 @@ const getStyles = colors => StyleSheet.create({
     paddingRight: '10%',
   },
   titleFont: {
-    fontSize: 15,
-    lineHeight: 18,
+    ...typography.body,
     paddingLeft: '2%',
     textTransform: 'capitalize',
     color: colors.primary,
@@ -69,13 +69,11 @@ const getStyles = colors => StyleSheet.create({
     alignItems: 'flex-end',
   },
   rateFont: {
-    lineHeight: 18,
-    fontSize: 15,
+    ...typography.body,
     color: colors.primary,
   },
   changeFont: {
-    lineHeight: 18,
-    fontSize: 12,
-    color: '#33BB5D',
+    ...typography.caption,
+    color: colors.positive,
   },
 });

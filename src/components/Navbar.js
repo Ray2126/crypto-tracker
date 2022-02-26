@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import PeriodContext from '../PeriodContext';
 import colors from '../styles/colors';
+import typography from '../styles/typography';
 
 const Navbar = () => {
   const [period, setPeriod] = useContext(PeriodContext);
@@ -38,13 +39,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   item: {
-    fontSize: 15,
-    lineHeight: 21,
+    ...typography.body,
     color: '#8A96AA',
   },
   itemSelected: {
-    fontSize: 15,
-    lineHeight: 21,
+    ...typography.body,
     color: '#F15A29',
   },
 });

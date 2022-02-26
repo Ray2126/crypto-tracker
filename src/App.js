@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Appearance } from 'react-native';
+import { Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './views/HomeScreen';
@@ -36,7 +36,7 @@ const App = () => {
         </NavigationContainer>
       </CoinsContext.Provider>
     </PeriodContext.Provider>
-  ) : <div>Loading...</div>;
+  ) : <Text>Loading...</Text>;
 };
 
 export default App;

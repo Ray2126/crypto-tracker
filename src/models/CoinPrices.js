@@ -7,9 +7,9 @@ class CoinPrices {
   }
 
   static fromApiResponse({ data, currency, coinId, period }) {
-    const prices = {};
+    const prices = [];
     data.prices.forEach(p => {
-      prices[p[0]] = p[1];
+      prices.push({ unixTimestamp: p[0], price: p[1] });
     });
     return new CoinPrices({
       currency,

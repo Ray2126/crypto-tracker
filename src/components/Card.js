@@ -4,7 +4,6 @@ import colors from '../styles/colors';
 import typography from '../styles/typography';
 
 const Card = ({ coin }) => {
-  const styles = getStyles(colors);
   return (
     <View
       style={styles.wrapperContainer}
@@ -32,7 +31,7 @@ const Card = ({ coin }) => {
 
 export default Card;
 
-const getStyles = colors => StyleSheet.create({
+const styles = StyleSheet.create({
   wrapperContainer: {
     borderWidth: 2,
     borderColor: colors.primary,

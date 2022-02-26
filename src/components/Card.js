@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import colors from '../styles/colors';
 
 const Card = ({ coin }) => {
-  const { colors } = useTheme();
   const styles = getStyles(colors);
   return (
     <View

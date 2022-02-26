@@ -1,16 +1,15 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
-import { useTheme } from '@react-navigation/native';
 import Navbar from '../components/Navbar';
 import DetailedCard from '../components/DetailedCard';
 import DetailedText from '../components/DetailedText';
 import PeriodContext from '../PeriodContext';
 import CoinsContext from '../CoinsContext';
 import getDataHook from '../getDataHook';
+import colors from '../styles/colors';
 
 const DetailsScreen = ({ navigation }) => {
-  const { colors } = useTheme();
   const [tokenInfo, tokenData] = useContext(CoinsContext)[0];
   const period = useContext(PeriodContext)[0];
   const { tokenRates } = getDataHook(period);

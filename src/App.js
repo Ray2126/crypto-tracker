@@ -13,37 +13,22 @@ const Stack = createStackNavigator();
 const App = () => {
   const [ coins, setCoins ] = useState({});
   const [ isLoading, setLoading ] = useState(true);
-  useEffect(async () => {
-    setCoins(await coinGeckoClient.listCoinMarketData({
-      currency: 'usd',
-      limit: '10',
-      pageNumber: '1',
-    }));
-    setLoading(false);
+  useEffect(() => {
+    (async () => {
+      setCoins(await coinGeckoClient.listCoinMarketData({
+        currency: 'usd',
+        limit: '10',
+        pageNumber: '1',
+      }));
+      setLoading(false);
+    })();
   }, []);
   const period = useState('week');
-  const scheme = Appearance.getColorScheme();
-  const lightTheme = {
-    dark: false,
-    colors: {
-      background: '#fff',
-      primary: '#495162',
-      secondary: '#8A96AA',
-    }
-  };
-  const darkTheme = {
-    dark: true,
-    colors: {
-      background: '#000000',
-      primary: '#F6F6F6',
-      secondary: '#646464',
-    }
-  };
 
   return !isLoading ? (
     <PeriodContext.Provider value={period}>
       <CoinsContext.Provider value={coins}>
-        <NavigationContainer theme={scheme === 'light' ? lightTheme : darkTheme}>
+        <NavigationContainer>
           <Stack.Navigator initialRouteName="Crypto Tracker" headerMode="none">
             <Stack.Screen name="Crypto Tracker" component={HomeScreen} />
             <Stack.Screen name="Details" component={DetailsScreen} />

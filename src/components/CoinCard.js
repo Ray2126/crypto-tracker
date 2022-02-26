@@ -4,7 +4,7 @@ import borders from '../styles/borders';
 import colors from '../styles/colors';
 import typography from '../styles/typography';
 
-const Card = ({ coin }) => {
+const CoinCard = ({ coin }) => {
   return (
     <View
       style={styles.container}
@@ -30,7 +30,7 @@ const Card = ({ coin }) => {
   );
 };
 
-export default Card;
+export default CoinCard;
 
 const styles = StyleSheet.create({
   container: {

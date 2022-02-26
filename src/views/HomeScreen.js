@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View, Text } from 'react-native';
 import Navbar from '../components/Navbar';
-import CardList from '../components/CardList';
+import CardList from '../components/CoinCardList';
 import colors from '../styles/colors';
 import typography from '../styles/typography';
 

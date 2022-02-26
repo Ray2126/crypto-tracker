@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
-import Card from './Card';
+import Card from './CoinCard';
 import CoinsContext from '../CoinsContext';
 
-const CardList = ({ nav }) => {
+const CoinCardList = ({ nav }) => {
   const coins = useContext(CoinsContext);
   return (
     <View style={styles.container}>
@@ -16,10 +16,8 @@ const CardList = ({ nav }) => {
               // nav();
             }}
           >
-            <View style={styles.cardContainer}>
-              <Card
-                coin={coin}
-              />
+            <View>
+              <Card coin={coin} />
             </View>
           </TouchableWithoutFeedback>
         );
@@ -28,15 +26,12 @@ const CardList = ({ nav }) => {
   );
 };
 
-export default CardList;
+export default CoinCardList;
 
 const styles = StyleSheet.create({
   container: {
     width: '90%',
     display: 'flex',
     flexGrow: 1,
-  },
-  cardContainer: {
-    width: '100%',
   },
 });

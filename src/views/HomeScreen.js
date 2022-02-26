@@ -22,12 +22,10 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   scrollContainer: {
-    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   container: {
-    flex: 1,
     alignItems: 'center',
     width: '100%',
     justifyContent: 'center',

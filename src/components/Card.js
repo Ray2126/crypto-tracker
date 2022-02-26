@@ -17,7 +17,7 @@ const Card = ({ coin }) => {
           {coin.name}
         </Text>
       </View>
-      <View style={styles.container}>
+      <View style={styles.pricesContainer}>
         <Text style={styles.rateFont}>
           {`$${coin.currentPrice}`}
         </Text>
@@ -33,25 +33,20 @@ export default Card;
 
 const getStyles = colors => StyleSheet.create({
   wrapperContainer: {
-    width: '90%',
     borderWidth: 2,
-    borderStyle: 'solid',
     borderColor: colors.primary,
     borderRadius: 15,
     marginTop: '5%',
+    paddingHorizontal: '3%',
     height: 70,
+    flexDirection: 'row',
   },
   iconContainer: {
-    display: 'flex',
     flexDirection: 'row',
-    position: 'absolute',
-    top: '10%',
-    left: '3%',
-    width: '100%',
-  },
-  graph: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     height: '100%',
-    width: '100%',
+    flexGrow: 1,
   },
   icon: {
     width: 36,
@@ -64,16 +59,13 @@ const getStyles = colors => StyleSheet.create({
   titleFont: {
     fontSize: 15,
     lineHeight: 18,
-    marginTop: '2%',
     paddingLeft: '2%',
     textTransform: 'capitalize',
     color: colors.primary,
   },
-  container: {
-    display: 'flex',
-    position: 'absolute',
-    width: '95%',
-    marginTop: '4%',
+  pricesContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
     alignItems: 'flex-end',
   },
   rateFont: {

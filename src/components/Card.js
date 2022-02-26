@@ -1,41 +1,47 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { LineChart } from 'react-native-svg-charts';
-import { curveBasis } from 'd3-shape';
 import { useTheme } from '@react-navigation/native';
-import CardBase from './CardBase';
-import CardRatesText from './CardRatesText';
 
 const Card = ({ coin }) => {
   const { colors } = useTheme();
+  const styles = getStyles(colors);
   return (
-    <CardBase height={140}>
-      {/* <LineChart
-        data={data.graphData}
-        svg={{ stroke: 'rgb(241,90,41)', strokeWidth: 1.5 }}
-        style={styles.graph}
-        contentInset={{ top: 65, bottom: 20 }}
-        curve={curveBasis}
-      /> */}
+    <View
+      style={styles.wrapperContainer}
+    >
       <View style={styles.iconContainer}>
-        <Image source={{ uri: coin.imageUrl }} style={styles.icon} />
-        <Text style={[styles.titleFont, { color: colors.primary }]}>{coin.name}</Text>
+        <Image
+          source={{ uri: coin.imageUrl }}
+          style={styles.icon}
+        />
+        <Text style={styles.titleFont}>
+          {coin.name}
+        </Text>
       </View>
-      <CardRatesText
-        rate={coin.currentPrice}
-        change={coin.priceChangePercentage24Hr}
-        rateSize={15}
-        changeSize={12}
-        align="flex-end"
-      />
-    </CardBase>
+      <View style={styles.container}>
+        <Text style={styles.rateFont}>
+          {`$${coin.currentPrice}`}
+        </Text>
+        <Text style={styles.changeFont}>
+          { coin.priceChangePercentage24Hr }
+        </Text>
+      </View>
+    </View>
   );
-
 };
 
 export default Card;
 
-const styles = StyleSheet.create({
+const getStyles = colors => StyleSheet.create({
+  wrapperContainer: {
+    width: '90%',
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: colors.primary,
+    borderRadius: 15,
+    marginTop: '5%',
+    height: 70,
+  },
   iconContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -62,5 +68,23 @@ const styles = StyleSheet.create({
     marginTop: '2%',
     paddingLeft: '2%',
     textTransform: 'capitalize',
+    color: colors.primary,
+  },
+  container: {
+    display: 'flex',
+    position: 'absolute',
+    width: '95%',
+    marginTop: '4%',
+    alignItems: 'flex-end',
+  },
+  rateFont: {
+    lineHeight: 18,
+    fontSize: 15,
+    color: colors.primary,
+  },
+  changeFont: {
+    lineHeight: 18,
+    fontSize: 12,
+    color: '#33BB5D',
   },
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import borders from '../styles/borders';
 
 const CardBase = ({ height, children }) => {
   return (
@@ -15,11 +16,8 @@ export default CardBase;
 
 const styles = StyleSheet.create({
   container: {
+    ...borders.roundedBorder,
     width: '90%',
-    borderWidth: 2,
-    borderStyle: 'solid',
-    borderColor: '#F6F6F6',
-    borderRadius: 15,
     marginTop: '5%',
   }
 });

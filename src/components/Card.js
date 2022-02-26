@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import borders from '../styles/borders';
 import colors from '../styles/colors';
 import typography from '../styles/typography';
 
@@ -33,9 +34,7 @@ export default Card;
 
 const styles = StyleSheet.create({
   wrapperContainer: {
-    borderWidth: 2,
-    borderColor: colors.primary,
-    borderRadius: 15,
+    ...borders.roundedBorder,
     marginTop: '5%',
     paddingHorizontal: '3%',
     height: 70,

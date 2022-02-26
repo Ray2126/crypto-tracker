@@ -7,22 +7,22 @@ import typography from '../styles/typography';
 const Card = ({ coin }) => {
   return (
     <View
-      style={styles.wrapperContainer}
+      style={styles.container}
     >
-      <View style={styles.iconContainer}>
+      <View style={styles.coinContainer}>
         <Image
           source={{ uri: coin.imageUrl }}
-          style={styles.icon}
+          style={styles.coinIcon}
         />
-        <Text style={styles.titleFont}>
+        <Text style={styles.coinName}>
           {coin.name}
         </Text>
       </View>
       <View style={styles.pricesContainer}>
-        <Text style={styles.rateFont}>
+        <Text style={styles.currentPrice}>
           {`$${coin.currentPrice}`}
         </Text>
-        <Text style={styles.changeFont}>
+        <Text style={styles.priceChange}>
           { coin.priceChangePercentage24Hr }
         </Text>
       </View>
@@ -33,32 +33,26 @@ const Card = ({ coin }) => {
 export default Card;
 
 const styles = StyleSheet.create({
-  wrapperContainer: {
+  container: {
     ...borders.roundedBorder,
     marginTop: '5%',
     paddingHorizontal: '3%',
     height: 70,
     flexDirection: 'row',
   },
-  iconContainer: {
+  coinContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    height: '100%',
     flexGrow: 1,
   },
-  icon: {
+  coinIcon: {
     width: 36,
     height: 36,
   },
-  ratesFont: {
-    paddingTop: '10%',
-    paddingRight: '10%',
-  },
-  titleFont: {
+  coinName: {
     ...typography.body,
-    paddingLeft: '2%',
-    textTransform: 'capitalize',
+    paddingLeft: '4%',
     color: colors.primary,
   },
   pricesContainer: {
@@ -66,11 +60,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-end',
   },
-  rateFont: {
+  currentPrice: {
     ...typography.body,
     color: colors.primary,
   },
-  changeFont: {
+  priceChange: {
     ...typography.caption,
     color: colors.positive,
   },

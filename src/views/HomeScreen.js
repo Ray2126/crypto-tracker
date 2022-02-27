@@ -13,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
           <Text style={[styles.title, { color: colors.primary }]}>Tracker</Text>
         </View>
         <Navbar />
-        <CardList nav={() => navigation.navigate('Details')} />
+        <CardList onCardPress={selectedCoin => navigation.navigate('Details', { selectedCoin })} />
       </View>
     </ScrollView>
   );

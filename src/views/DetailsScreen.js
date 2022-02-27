@@ -1,47 +1,66 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { VictoryChart, VictoryLine, VictoryTheme } from 'victory-native';
 import Navbar from '../components/Navbar';
-import DetailedCard from '../components/DetailedCard';
-import DetailedText from '../components/DetailedText';
+import CoinDetails from '../components/CoinDetails';
 import PeriodContext from '../PeriodContext';
-import CoinsContext from '../CoinsContext';
-import getDataHook from '../getDataHook';
 import colors from '../styles/colors';
 import typography from '../styles/typography';
 
-const DetailsScreen = ({ navigation }) => {
-  const [tokenInfo, tokenData] = useContext(CoinsContext)[0];
+const DetailsScreen = ({ navigation, route }) => {
+  const selectedCoin = route.params.selectedCoin;
   const period = useContext(PeriodContext)[0];
-  const { tokenRates } = getDataHook(period);
-
-  //Find corresponding token data to use
-  const idToFind = tokenInfo.id;
-  const arr = tokenRates.map((e) => {
-    return e.id;
-  });
-  const idIndex = arr.lastIndexOf(idToFind);
 
   return (
-    <View style={[styles.container, { color: colors.background }]}>
-      <TouchableWithoutFeedback onPress={() => navigation.pop()}>
-        <Ionicons
-          name="ios-arrow-back"
-          size={25}
-          color={colors.primary}
-          style={styles.backButton}
-        />
-      </TouchableWithoutFeedback>
-      <View style={styles.titleContainer}>
-        <Image
-          source={{ uri: tokenInfo.icon_address }}
-          style={styles.icon}
-        />
-        <Text style={[styles.titleFont, { color: colors.primary }]}>{tokenInfo.name}</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableWithoutFeedback onPress={() => navigation.pop()}>
+          <Ionicons
+            name="ios-arrow-back"
+            size={25}
+            color={colors.primary}
+          />
+        </TouchableWithoutFeedback>
+        <View style={styles.coinContainer}>
+          <Image
+            source={{ uri: selectedCoin.imageUrl }}
+            style={styles.coinIcon}
+          />
+          <Text style={styles.coinName}>{ selectedCoin.name }</Text>
+        </View>
+        {/* This View is used to center the coin icon and name */}
+        <View style={styles.placeHolder}/>
       </View>
       <Navbar />
-      <DetailedCard data={tokenRates[idIndex]} />
-      <DetailedText info={tokenInfo} data={tokenData} />
+      
+      <VictoryChart
+        theme={VictoryTheme.material}
+      >
+        <VictoryLine
+          style={{
+            data: { stroke: '#c43a31' },
+            parent: { border: '1px solid #ccc'}
+          }}
+          data={[
+            { x: 1, y: 2 },
+            { x: 2, y: 3 },
+            { x: 3, y: 5 },
+            { x: 4, y: 4 },
+            { x: 5, y: 7 }
+          ]}
+        />
+      </VictoryChart>
+      
+      <View style={styles.pricesContainer}>
+        <Text style={styles.currentPrice}>
+          {`$${selectedCoin.currentPrice}`}
+        </Text>
+        <Text style={styles.priceChange}>
+          { selectedCoin.priceChangePercentage24Hr }
+        </Text>
+      </View>
+      <CoinDetails coin={selectedCoin} />
     </View>
   );
 };
@@ -50,30 +69,44 @@ export default DetailsScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    width: '100%',
-    paddingTop: '16%',
+    flexGrow: 1,
+    paddingTop: '8%',
+    backgroundColor: colors.background,
   },
-  icon: {
-    width: 30,
-    height: 30,
-    marginRight: '3.5%',
-  },
-  titleContainer: {
-    display: 'flex',
-    width: '100%',
+  header: {
     flexDirection: 'row',
-    marginBottom: '5%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: '5%',
   },
-  titleFont: {
+  placeHolder: {
+    width: 25,
+    height: 25,
+  },
+  coinContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  coinIcon: {
+    width: 36,
+    height: 36,
+    marginRight: '2%',
+  },
+  coinName: {
     ...typography.title,
+    color: colors.primary,
   },
-  backButton: {
-    marginRight: '80%',
-    paddingRight: '5%',
-    transform: [{ translateY: 28 }],
+  pricesContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  currentPrice: {
+    ...typography.body,
+    color: colors.primary,
+  },
+  priceChange: {
+    ...typography.caption,
+    color: colors.positive,
   },
 });

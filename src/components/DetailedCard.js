@@ -5,7 +5,7 @@ import { Defs, LinearGradient, Stop } from 'react-native-svg';
 import * as shape from 'd3-shape';
 
 import CardBase from './CardBase';
-import CardRatesText from './CardRatesText';
+// import CardRatesText from './CardRatesText';
 
 const DetailedCard = ({ data }) => {
   return data ? (
@@ -24,12 +24,12 @@ const DetailedCard = ({ data }) => {
         <Gradient />
       </AreaChart>
 
-      <CardRatesText
+      {/* <CardRatesText
         data={data}
         top="10%"
         rateSize={18}
         align="center"
-      />
+      /> */}
     </CardBase>
   ) : <Text></Text>;
 };

@@ -9,6 +9,7 @@ class Coin {
     this.priceChangePercentage7D = props.priceChangePercentage7D;
     this.priceChangePercentage30D = props.priceChangePercentage30D;
     this.priceChangePercentage1Y = props.priceChangePercentage1Y;
+    this.marketCap = props.marketCap;
     this.currency = props.currency;
   }
 
@@ -23,6 +24,7 @@ class Coin {
       priceChangePercentage7D: data.price_change_percentage_7d_in_currency,
       priceChangePercentage30D: data.price_change_percentage_30d_in_currency,
       priceChangePercentage1Y: data.price_change_percentage_1y_in_currency,
+      marketCap: data.market_cap,
       currency,
     });
   }

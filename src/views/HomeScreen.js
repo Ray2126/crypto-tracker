@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   titleContainer: {
-    marginBottom: '6%',
+    marginBottom: '3%',
     alignItems: 'center',
   },
   title: {

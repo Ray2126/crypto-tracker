@@ -35,7 +35,7 @@ export default CoinCard;
 const styles = StyleSheet.create({
   container: {
     ...borders.roundedBorder,
-    marginTop: '5%',
+    marginBottom: '5%',
     paddingHorizontal: '3%',
     height: 70,
     flexDirection: 'row',

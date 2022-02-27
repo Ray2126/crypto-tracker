@@ -5,21 +5,20 @@ import colors from '../styles/colors';
 import typography from '../styles/typography';
 
 const Navbar = () => {
-  const [period, setPeriod] = useContext(PeriodContext);
-  const navItems = ['all', 'year', 'month', 'week', 'day'];
+  const [ period, setPeriod ] = useContext(PeriodContext);
+  const navItems = [ 'day', 'week', 'month', 'year', 'all' ];
   return (
     <View style={styles.container}>
-      {navItems.map((title) => {
+      {navItems.map(navItem => {
         return (
           <TouchableOpacity
-            key={title}
-            onPress={() => setPeriod(title)}
+            style={styles.navItemContainer}
+            key={navItem}
+            onPress={() => setPeriod(navItem)}
           >
             <View>
-              <Text
-                style={period === title ? styles.itemSelected : [styles.item, { color: colors.secondary }]}
-              >
-                {title}
+              <Text style={period === navItem ? styles.selectedNavItem : styles.navItem}>
+                {navItem}
               </Text>
             </View>
           </TouchableOpacity>
@@ -33,17 +32,20 @@ export default Navbar;
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-around',
   },
-  item: {
+  navItem: {
     ...typography.body,
-    color: '#8A96AA',
+    color: colors.secondary,
   },
-  itemSelected: {
+  selectedNavItem: {
     ...typography.body,
-    color: '#F15A29',
+    color: colors.accent,
+  },
+  navItemContainer: {
+    paddingHorizontal: '3%',
+    paddingVertical: '5%',
   },
 });

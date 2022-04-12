@@ -29,6 +29,29 @@ class Coin {
     });
   }
 
+  get formattedCurrentPrice() {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    })
+      .format(this.currentPrice);
+  }
+
+  priceChangeFor(period) {
+    const priceChangePeriodMap = {
+      day: this.priceChangePercentage24Hr,
+      week: this.priceChangePercentage7D,
+      month: this.priceChangePercentage30D,
+      year: this.priceChangePercentage1Y,
+    };
+    return priceChangePeriodMap[period];
+  }
+
+  formattedPriceChangeFor(period) {
+    const priceChange = this.priceChangeFor(period);
+    return `${priceChange.toFixed(2)}%`;
+  }
+
 }
 
 export default Coin;

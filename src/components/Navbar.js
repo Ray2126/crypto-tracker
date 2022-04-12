@@ -6,7 +6,7 @@ import typography from '../styles/typography';
 
 const Navbar = () => {
   const [ period, setPeriod ] = useContext(PeriodContext);
-  const navItems = [ 'day', 'week', 'month', 'year', 'all' ];
+  const navItems = [ 'day', 'week', 'month', 'year' ];
   return (
     <View style={styles.container}>
       {navItems.map(navItem => {

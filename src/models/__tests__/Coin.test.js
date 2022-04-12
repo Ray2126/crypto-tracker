@@ -46,8 +46,34 @@ describe('Coin', () => {
         priceChangePercentage7D: -14.521825059444987,
         priceChangePercentage30D: 4.943772472792155,
         priceChangePercentage1Y: -29.974791225475006,
+        marketCap: 722374875704,
         currency: 'USD'
       });
     });
+  });
+
+  describe('formattedPriceChangeFor', () => {
+    const coin = new Coin({
+      priceChangePercentage24Hr: 3.092066367055334,
+      priceChangePercentage7D: -14.521825059444987,
+      priceChangePercentage30D: 4.943772472792155,
+      priceChangePercentage1Y: -29.974791225475006,
+    });
+    it('should return formatted 24Hr price change when passed day period', () => {
+      expect(coin.formattedPriceChangeFor('day')).toEqual('3.09%');
+    });
+
+    it('should return formatted 7D price change when passed week period', () => {
+      expect(coin.formattedPriceChangeFor('week')).toEqual('-14.52%');
+    });
+
+    it('should return formatted 30D price change when passed month period', () => {
+      expect(coin.formattedPriceChangeFor('month')).toEqual('4.94%');
+    });
+
+    it('should return formatted 1Y price change when passed year period', () => {
+      expect(coin.formattedPriceChangeFor('year')).toEqual('-29.97%');
+    });
+
   });
 });

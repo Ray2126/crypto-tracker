@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import PeriodContext from '../PeriodContext';
 import borders from '../styles/borders';
 import colors from '../styles/colors';
 import typography from '../styles/typography';
 
 const CoinCard = ({ coin }) => {
+  const period = useContext(PeriodContext)[0];
   return (
     <View
       style={styles.container}
@@ -20,10 +22,10 @@ const CoinCard = ({ coin }) => {
       </View>
       <View style={styles.pricesContainer}>
         <Text style={styles.currentPrice}>
-          {`$${coin.currentPrice}`}
+          { coin.formattedCurrentPrice }
         </Text>
-        <Text style={styles.priceChange}>
-          { coin.priceChangePercentage24Hr }
+        <Text style={coin.priceChangeFor(period) < 0 ? styles.priceChangeNegative : styles.priceChangePositive}>
+          { coin.formattedPriceChangeFor(period) }
         </Text>
       </View>
     </View>
@@ -64,8 +66,12 @@ const styles = StyleSheet.create({
     ...typography.body,
     color: colors.primary,
   },
-  priceChange: {
+  priceChangePositive: {
     ...typography.caption,
     color: colors.positive,
+  },
+  priceChangeNegative: {
+    ...typography.caption,
+    color: colors.negative,
   },
 });

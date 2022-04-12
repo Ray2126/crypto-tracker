@@ -7,7 +7,7 @@ import typography from '../styles/typography';
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <ScrollView>
+    <ScrollView bounces={false}>
       <View style={styles.container}>
         <Navbar />
         <CoinCardList onCardPress={selectedCoin => navigation.navigate('Details', { selectedCoin })} />

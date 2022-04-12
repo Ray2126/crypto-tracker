@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './views/HomeScreen';
@@ -7,6 +7,7 @@ import DetailsScreen from './views/DetailsScreen';
 import PeriodContext from './PeriodContext';
 import CoinsContext from './CoinsContext';
 import coinGeckoClient from './models/coinGeckoClient';
+import colors from './styles/colors';
 
 const Stack = createStackNavigator();
 
@@ -29,9 +30,23 @@ const App = () => {
     <PeriodContext.Provider value={period}>
       <CoinsContext.Provider value={coins}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Crypto Tracker" headerMode="none">
-            <Stack.Screen name="Crypto Tracker" component={HomeScreen} />
-            <Stack.Screen name="Details" component={DetailsScreen} />
+          <Stack.Navigator initialRouteName="Crypto Tracker" headerShown={true}>
+            <Stack.Screen
+              name="Home Screen"
+              component={HomeScreen}
+              options={{
+                headerStyle: styles.headerStyles,
+                headerTintColor: colors.primary,
+              }}
+            />
+            <Stack.Screen
+              name="Details"
+              component={DetailsScreen}
+              options={{
+                headerStyle: styles.headerStyles,
+                headerTintColor: colors.primary,
+              }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </CoinsContext.Provider>
@@ -40,3 +55,9 @@ const App = () => {
 };
 
 export default App;
+
+const styles = StyleSheet.create({
+  headerStyles: {
+    backgroundColor: colors.background,
+  },
+});

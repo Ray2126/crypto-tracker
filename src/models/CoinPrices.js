@@ -1,3 +1,17 @@
+function unixTimestampToFormattedDate({ unixTimestamp, period }) {
+  const periodsWithYear = [ 'year', 'all' ];
+  const includeYearInDate = periodsWithYear.includes(period);
+  const formatter = new Intl.DateTimeFormat('en-us', {
+    month: 'short',
+    day: 'numeric',
+    year: includeYearInDate ? 'numeric' : undefined,
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'UTC'
+  });
+  return formatter.format(unixTimestamp);
+}
+
 class CoinPrices {
   constructor(props) {
     this.prices = props.prices;
@@ -17,6 +31,14 @@ class CoinPrices {
       period,
       prices,
     });
+  }
+
+  toGraphData() {
+    const graphData = this.prices.map(p => {
+      const formattedDate = unixTimestampToFormattedDate({ unixTimestamp: p.unixTimestamp, period: this.period });
+      return { x: formattedDate, y: p.price };
+    });
+    return graphData;
   }
 }
 

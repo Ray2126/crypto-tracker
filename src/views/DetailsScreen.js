@@ -1,9 +1,10 @@
 import { Ionicons } from '@expo/vector-icons';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
-import { VictoryChart, VictoryLine, VictoryTheme } from 'victory-native';
 import Navbar from '../components/Navbar';
 import CoinDetails from '../components/CoinDetails';
+import Chart from '../components/Chart';
+import coinGeckoClient from '../models/coinGeckoClient';
 import PeriodContext from '../PeriodContext';
 import colors from '../styles/colors';
 import typography from '../styles/typography';
@@ -11,8 +12,19 @@ import typography from '../styles/typography';
 const DetailsScreen = ({ navigation, route }) => {
   const selectedCoin = route.params.selectedCoin;
   const period = useContext(PeriodContext)[0];
+  const [ selectedCoinPrices, setSelectedCoinPrices ] = useState();
+  useEffect(() => {
+    (async () => {
+      setSelectedCoinPrices(await coinGeckoClient.getHistoricalDataForCoin({
+        currency: 'usd',
+        coinId: selectedCoin.id,
+        period,
+      })
+      );
+    })();
+  }, [period]);
 
-  return (
+  return selectedCoinPrices ? (
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableWithoutFeedback onPress={() => navigation.pop()}>
@@ -33,36 +45,14 @@ const DetailsScreen = ({ navigation, route }) => {
         <View style={styles.placeHolder}/>
       </View>
       <Navbar />
-      
-      <VictoryChart
-        theme={VictoryTheme.material}
-      >
-        <VictoryLine
-          style={{
-            data: { stroke: '#c43a31' },
-            parent: { border: '1px solid #ccc'}
-          }}
-          data={[
-            { x: 1, y: 2 },
-            { x: 2, y: 3 },
-            { x: 3, y: 5 },
-            { x: 4, y: 4 },
-            { x: 5, y: 7 }
-          ]}
-        />
-      </VictoryChart>
-      
-      <View style={styles.pricesContainer}>
-        <Text style={styles.currentPrice}>
-          {`$${selectedCoin.currentPrice}`}
-        </Text>
-        <Text style={styles.priceChange}>
-          { selectedCoin.priceChangePercentage24Hr }
-        </Text>
+
+      <View style={{ paddingHorizontal: 10}}>
+        <Chart graphData={selectedCoinPrices.toGraphData()} />
       </View>
+
       <CoinDetails coin={selectedCoin} />
     </View>
-  );
+  ) : <Text>Loading...</Text>;
 };
 
 export default DetailsScreen;
@@ -95,18 +85,5 @@ const styles = StyleSheet.create({
   coinName: {
     ...typography.title,
     color: colors.primary,
-  },
-  pricesContainer: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-  },
-  currentPrice: {
-    ...typography.body,
-    color: colors.primary,
-  },
-  priceChange: {
-    ...typography.caption,
-    color: colors.positive,
   },
 });

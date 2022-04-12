@@ -44,4 +44,54 @@ describe('CoinPrices', () => {
       });
     });
   });
+
+  describe('toGraphData', () => {
+    it('should return the day, month and time when period is month', () => {
+      const coinPrices = new CoinPrices({
+        currency: 'USD',
+        coinId: 'bitcoin',
+        period: 'month',
+        prices: [
+          { unixTimestamp: 1645741232359, price: 38416.50449423911 },
+          { unixTimestamp: 1645741422061, price: 38418.36653705965 },
+          { unixTimestamp: 1645741763190, price: 38388.964104474915 },
+          { unixTimestamp: 1645742109025, price: 38263.49512668027 },
+          { unixTimestamp: 1645742345254, price: 38130.58450097274 },
+          { unixTimestamp: 1645742673136, price: 37981.3135935002 },
+        ],
+      });
+      expect(coinPrices.toGraphData()).toEqual([
+        { x: 'Feb 24, 10:20 PM', y: 38416.50449423911 },
+        { x: 'Feb 24, 10:23 PM', y: 38418.36653705965 },
+        { x: 'Feb 24, 10:29 PM', y: 38388.964104474915 },
+        { x: 'Feb 24, 10:35 PM', y: 38263.49512668027 },
+        { x: 'Feb 24, 10:39 PM', y: 38130.58450097274 },
+        { x: 'Feb 24, 10:44 PM', y: 37981.3135935002 },
+      ]);
+    });
+
+    it('should return the day, month, year and time when period is year', () => {
+      const coinPrices = new CoinPrices({
+        currency: 'USD',
+        coinId: 'bitcoin',
+        period: 'year',
+        prices: [
+          { unixTimestamp: 1645741232359, price: 38416.50449423911 },
+          { unixTimestamp: 1645741422061, price: 38418.36653705965 },
+          { unixTimestamp: 1645741763190, price: 38388.964104474915 },
+          { unixTimestamp: 1645742109025, price: 38263.49512668027 },
+          { unixTimestamp: 1645742345254, price: 38130.58450097274 },
+          { unixTimestamp: 1645742673136, price: 37981.3135935002 },
+        ],
+      });
+      expect(coinPrices.toGraphData()).toEqual([
+        { x: 'Feb 24, 2022, 10:20 PM', y: 38416.50449423911 },
+        { x: 'Feb 24, 2022, 10:23 PM', y: 38418.36653705965 },
+        { x: 'Feb 24, 2022, 10:29 PM', y: 38388.964104474915 },
+        { x: 'Feb 24, 2022, 10:35 PM', y: 38263.49512668027 },
+        { x: 'Feb 24, 2022, 10:39 PM', y: 38130.58450097274 },
+        { x: 'Feb 24, 2022, 10:44 PM', y: 37981.3135935002 },
+      ]);
+    });
+  });
 });

@@ -8,7 +8,7 @@ const CoinDetails = ({ coin }) => {
     <>
       <Text style={styles.header}>Information</Text>
       <View style={styles.body}>
-        <View>
+        <View style={styles.leftTextContainer}>
           <Text style={styles.text}>
             Symbol:
           </Text>
@@ -16,12 +16,12 @@ const CoinDetails = ({ coin }) => {
             Market Cap:
           </Text>
         </View>
-        <View>
+        <View style={styles.rightTextContainer}>
           <Text style={styles.text}>
             {coin.symbol}
           </Text>
           <Text style={styles.text}>
-            ${coin.marketCap} {coin.currency}
+            {coin.formattedMarketCap} {coin.currency.toUpperCase()}
           </Text>
         </View>
       </View>
@@ -43,6 +43,12 @@ const styles = StyleSheet.create({
   text: {
     ...typography.body,
     color: colors.secondary,
+  },
+  leftTextContainer: {
+    width: '30%',
+  },
+  rightTextContainer: {
+    width: '60%',
   },
 });
 

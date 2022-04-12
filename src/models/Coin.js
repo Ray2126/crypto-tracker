@@ -37,6 +37,14 @@ class Coin {
       .format(this.currentPrice);
   }
 
+  get formattedMarketCap() {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    })
+      .format(this.marketCap);
+  }
+
   priceChangeFor(period) {
     const priceChangePeriodMap = {
       day: this.priceChangePercentage24Hr,

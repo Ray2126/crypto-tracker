@@ -28,7 +28,6 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
 
 const styles = StyleSheet.create({
   container: {
@@ -49,3 +48,5 @@ const styles = StyleSheet.create({
     paddingVertical: '5%',
   },
 });
+
+export default Navbar;

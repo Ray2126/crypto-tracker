@@ -32,8 +32,6 @@ const CoinCard = ({ coin }) => {
   );
 };
 
-export default CoinCard;
-
 const styles = StyleSheet.create({
   container: {
     ...borders.roundedBorder,
@@ -75,3 +73,5 @@ const styles = StyleSheet.create({
     color: colors.negative,
   },
 });
+
+export default CoinCard;

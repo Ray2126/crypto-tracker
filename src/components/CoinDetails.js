@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import typography from '../styles/typography';
 import colors from '../styles/colors';
 
-const DetailedText = ({ coin }) => {
+const CoinDetails = ({ coin }) => {
   return (
     <>
       <Text style={styles.header}>Information</Text>
@@ -29,8 +29,6 @@ const DetailedText = ({ coin }) => {
   );
 };
 
-export default DetailedText;
-
 const styles = StyleSheet.create({
   body: {
     flexDirection: 'row',
@@ -47,3 +45,5 @@ const styles = StyleSheet.create({
     color: colors.secondary,
   },
 });
+
+export default CoinDetails;

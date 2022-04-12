@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import Navbar from '../components/Navbar';
-import CardList from '../components/CoinCardList';
+import CoinCardList from '../components/CoinCardList';
 import colors from '../styles/colors';
 import typography from '../styles/typography';
 
@@ -10,13 +10,12 @@ const HomeScreen = ({ navigation }) => {
     <ScrollView>
       <View style={styles.container}>
         <Navbar />
-        <CardList onCardPress={selectedCoin => navigation.navigate('Details', { selectedCoin })} />
+        <CoinCardList onCardPress={selectedCoin => navigation.navigate('Details', { selectedCoin })} />
       </View>
     </ScrollView>
   );
 };
 
-export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -29,3 +28,5 @@ const styles = StyleSheet.create({
     color: colors.primary,
   },
 });
+
+export default HomeScreen;

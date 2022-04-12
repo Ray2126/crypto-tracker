@@ -41,8 +41,6 @@ const DetailsScreen = ({ route }) => {
   ) : <Text>Loading...</Text>;
 };
 
-export default DetailsScreen;
-
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -64,3 +62,5 @@ const styles = StyleSheet.create({
     color: colors.primary,
   },
 });
+
+export default DetailsScreen;

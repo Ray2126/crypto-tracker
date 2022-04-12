@@ -37,7 +37,6 @@ const coinGeckoClient = {
       'week': '7',
       'month': '30',
       'year': '365',
-      'all': 'max',
     };
     const response = await axiosInstance.request({
       method: 'GET',

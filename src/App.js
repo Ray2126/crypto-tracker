@@ -54,10 +54,10 @@ const App = () => {
   ) : <Text>Loading...</Text>;
 };
 
-export default App;
-
 const styles = StyleSheet.create({
   headerStyles: {
     backgroundColor: colors.background,
   },
 });
+
+export default App;

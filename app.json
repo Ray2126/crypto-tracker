@@ -2,7 +2,7 @@
   "expo": {
     "name": "crypto-tracker",
     "slug": "crypto-tracker",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -26,7 +26,8 @@
     "description": "Track the rates of bitcoin and other digital currencies.",
     "githubUrl": "https://github.com/Ray2126/crypto-tracker",
     "android": {
-      "package": "com.cryptotrackerapp123"
+      "package": "com.cryptotrackerapp123",
+      "versionCode": 2,
     }
   }
 }

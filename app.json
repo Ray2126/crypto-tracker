@@ -24,6 +24,9 @@
     },
     "userInterfaceStyle": "automatic",
     "description": "Track the rates of bitcoin and other digital currencies.",
-    "githubUrl": "https://github.com/Ray2126/crypto-tracker"
+    "githubUrl": "https://github.com/Ray2126/crypto-tracker",
+    "android": {
+      "package": "com.cryptotrackerapp123"
+    }
   }
 }

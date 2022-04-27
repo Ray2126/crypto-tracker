@@ -4,7 +4,7 @@ const scheme = Appearance.getColorScheme();
 
 const defaultColors = {
   positive: '#33BB5D',
-  negative: '#CC1101',
+  negative: '#CC1100',
   accent: '#F15A29',
 };
 

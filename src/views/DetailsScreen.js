@@ -12,18 +12,20 @@ const DetailsScreen = ({ route }) => {
   const selectedCoin = route.params.selectedCoin;
   const period = useContext(PeriodContext)[0];
   const [ selectedCoinPrices, setSelectedCoinPrices ] = useState();
+  const [ loading, setLoading ] = useState(true);
   useEffect(() => {
     (async () => {
+      setLoading(true);
       setSelectedCoinPrices(await coinGeckoClient.getHistoricalDataForCoin({
         currency: 'usd',
         coinId: selectedCoin.id,
         period,
-      })
-      );
+      }));
+      setLoading(false);
     })();
   }, [period]);
 
-  return selectedCoinPrices ? (
+  return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
@@ -34,11 +36,17 @@ const DetailsScreen = ({ route }) => {
       </View>
       <Navbar />
 
-      <Chart graphData={selectedCoinPrices.toGraphData()} />
+      {
+        loading ?
+          <View style={styles.placeholder}>
+            <Text>Loading...</Text>
+          </View> :
+          <Chart graphData={selectedCoinPrices.toGraphData()} />
+      }
 
       <CoinDetails coin={selectedCoin} />
     </View>
-  ) : <Text>Loading...</Text>;
+  );
 };
 
 const styles = StyleSheet.create({
@@ -61,6 +69,10 @@ const styles = StyleSheet.create({
     ...typography.title,
     color: colors.primary,
   },
+  placeholder: {
+    width: '100%',
+    height: '45%',
+  }
 });
 
 export default DetailsScreen;

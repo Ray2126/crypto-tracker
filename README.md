@@ -2,7 +2,9 @@
 
 A React Native app that tracks the rates of Bitcoin and other digital currencies.
 
-## How to run
+Get this app on the Google Play Store [here](https://play.google.com/store/apps/details?id=com.cryptotrackerapp123).
+
+## How to run locally
 ### Android
 
 Download the [Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en) app from Google Play Store. Then, navigate to [this page](https://expo.io/@raygod/crypto-tracker) and scan the QR code with the Expo app.

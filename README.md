@@ -16,3 +16,9 @@ Download the [Expo](https://apps.apple.com/app/apple-store/id982107779) app from
 expo start
 ```
 to run the Expo CLI. On the Expo CLI, you should then click "Send link with email...". Enter your email and then you should get an email with a link to open the Expo app through your iOS device.
+
+## Demo Video
+
+https://github.com/Ray2126/crypto-tracker/assets/50732795/02edff69-beb9-4c10-b95d-f80d67d5a67b
+
+
